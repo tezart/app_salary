@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Рейтинг (пример 3)</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<link href="js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+    <link href="css/application.css?2" rel="stylesheet">
+
+</head>
+<body>
+<div id="app" class="container-fluid">
+	<div class="app-main-menu">
+    	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rate_employee_options">Настройки рейтов сотрудников</button>
+		<a href="rate_client_options.html" id="rate_client_options">Настройки рейтов клиентов</a>
+	    <a href="dependencies_options.html" id="dependencies_options">Настройки вассализма</a>
+	</div>
+
+    <div class="modal fade bd-example-modal-lg" id="rate_employee_options" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<h4 class="modal-title">Настройки ставок сотрудников</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="modal-body">
+
+					<a>Добавить еще</a>
+
+
+					<div class="add-new-employee-salary">
+						<input class="add-new-employee" type="text" name="employe_option" value="" placeholder="Сотрудник">
+						<input class="add-new-employee-rate" type="text" name="employe_rate" value="" placeholder="Рейт в час"> руб.
+						<button class="btn btn-success add-new-rate">Добавить</button>
+					</div>
+
+					<div id="rate_employee_body">
+						<table>
+							<thead>
+								<tr>
+									<td>Сотрудник</td><td>Рейт</td>
+								</tr>
+							</thead>
+							<tbody id="rate_employee_list">
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+				</div>
+			</div>
+		</div>
+    </div>
+
+	<div class="bs-callout bs-callout-danger">
+		<div class="form-group">
+			<div class="row form-group filter-date">
+				<div class="col-xs-2"><label>Задачи за период</label></div>
+				<div class="col-xs-2"><input class="form-control" id="date_fld_start" placeholder="c"></div>
+				<div class="col-xs-2"><input class="form-control" id="date_fld_finish" placeholder="до"></div>
+			</div>
+
+
+			<!--
+            <div class="cfx">
+                <div class="filter_item">
+                    <h3 class="filter_title">Группа проекта</h3>
+                    <select name="FILTER_GROUPS[]" multiple style="height:125px" id="group_filter">
+                        <option value="1">Все</option>
+                    </select>
+                </div>
+
+                <div class="filter_item">
+                    <h3 class="filter_title">Статус</h3>
+                    <select name="FILTER_STATUS[]" multiple style="height:125px" id="status_filter">
+                        <option value="1">Все</option>
+                    </select>
+                </div>
+
+                <div class="filter_item">
+                    <h3 class="filter_title">Ответственный</h3>
+                    <select name="FILTER_RESPONSIBLE[]" multiple style="height:125px" id="responsible_filter">
+                        <option value="1">Все</option>
+                    </select>
+                </div>
+
+                <div class="filter_item">
+                    <h3 class="filter_title">Менеджер</h3>
+                    <select name="FILTER_MANAGER[]" multiple style="height:125px" id="manager_filter">
+                        <option value="1">Все</option>
+                    </select>
+                </div>
+            </div>
+            -->
+			<div>
+				<button class="btn btn-success" id="app_filter_start">Погнали</button> <button class="btn btn-sm" href="/">Сбросить</button>
+			</div>
+		</div>
+	</div>
+
+	<table class="table table-hover table-condensed table-bordered main-app-table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Название</th>
+				<th>Группа</th>
+				<th>Статус</th>
+				<th>Постановка</th>
+				<th>Deadline</th>
+				<th>Оценка</th>
+				<th>Стоимость</th>
+				<th>Исполнитель</th>
+				<th>Менеджер</th>
+				<th>Маржа</th>
+			</tr>
+		</thead>
+		<tbody id="tasks-list">
+			<tr>
+				<td colspan="3"><i class="fa fa-spinner fa-spin"></i></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</div>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/moment/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="js/utils.js?9"></script>
+<script type="text/javascript" src="js/application.js?70"></script>
+<script src="//api.bitrix24.com/api/v1/"></script>
+
+<script>
+    $(document).ready(function () {
+		BX24.init(function(){
+
+            oUtils = new CUtils();
+
+            // create our application
+            app = new application();
+			app.saveFrameWidth();
+			app.displayTasks();
+
+		});
+    });
+</script>
+
+</body>
+</html>
