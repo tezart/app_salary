@@ -1,28 +1,20 @@
-.bs-callout {
-	padding: 20px;
-	margin: 20px 0;
-	border: 1px solid #eee;
-	border-left-width: 5px;
-	border-radius: 3px;
+.app-main-menu {
+	margin:5px 0px 10px 0px;
 }
-
-.bs-callout-danger {
-	border-left-color: #ce4844;
+.main-filter {
+	margin:0px 0px 10px 0px;
 }
-
-.bs-callout-danger h4 {
-	color: #ce4844;
-}
-
-.bs-callout h4 {
-	margin-top: 0;
-	margin-bottom: 5px;
-}
-
 .volume {
 	font-size: 24px;
 }
 
 .main-app-table {
 	font-size:14px;
+}
+
+.add-new-employee-salary {
+	margin-bottom:10px;
+}
+.destroy-rate {
+	cursor:pointer;
 }
